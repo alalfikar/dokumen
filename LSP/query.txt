@@ -1,0 +1,61 @@
+    DELIMITER $$
+    CREATE FUNCTION sf_tampil_siswa_kelas (p_kelas int) RETURNS INT DETERMINISTIC
+
+    BEGIN
+    DECLARE jml INT;
+    SELECT COUNT(*) AS jml_kelas INTO jml FROM tbl_siswa WHERE kelas = p_kelas;
+    RETURN jml;
+    END$$
+
+    DELIMITER ;
+
+
+
+select sf_tampil_siswa_kelas("1");
+
+
+
+
+
+
+
+
+
+
+DELIMITER //
+CREATE PROCEDURE tambah_penerbit (
+    IN kode_penerbit_nya CHAR(3),IN nama_penerbit_nya VARCHAR(150),
+    IN kota_penerbit_nya VARCHAR(50), IN email_penerbit_nya VARCHAR(150),
+    IN web_penerbit_nya VARCHAR(200), IN telp_penerbit_nya varchar(20)
+)
+BEGIN
+
+
+
+
+
+DELIMITER //
+CREATE PROCEDURE hapus_penerbit (IN kode_penerbit_nya CHAR(3))
+BEGIN
+DELETE FROm  tbl_penerbit WHERE kode_penerbit=kode_penerbit_nya;
+END //
+DELIMITER ;
+
+
+
+
+DELIMITER //
+CREATE PROCEDURE tampil_penerbit ()
+BEGIN
+SELECT *  FROM  tbl_penerbit;
+END //
+DELIMITER ;
+
+
+
+DELIMITER //
+CREATE PROCEDURE detail_penerbit (IN kode_penerbit_nya CHAR(5))
+BEGIN
+SELECT * FROM  tbl_penerbit WHERE kode_penerbit=kode_penerbit_nya;
+END //
+DELIMITER ;
